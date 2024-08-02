@@ -1,26 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Formulario;
+package formularios;
 
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import recursos.AES;
+import algoritmos.AES;
 
-/**
- *
- * @author HP
- */
-public class FrmSecret extends javax.swing.JFrame {
+public class FrmAes extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrmSecret
+     * Creates new form FrmAes
      */
-    public FrmSecret() {
+    public FrmAes() {
         initComponents();
         setIconImage((new ImageIcon(getClass().getResource("/icon.png"))).getImage());
         setLocationRelativeTo(null);
@@ -61,9 +52,11 @@ public class FrmSecret extends javax.swing.JFrame {
         jRadioButtonBase64NO = new javax.swing.JRadioButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("key Secret Ver 1.2");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Algoritmo AES");
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -181,13 +174,16 @@ public class FrmSecret extends javax.swing.JFrame {
                             .addComponent(jTextFieldSemilla)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(36, 36, 36))))
+            .addComponent(jSeparator1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
+                .addGap(15, 15, 15)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -261,7 +257,7 @@ public class FrmSecret extends javax.swing.JFrame {
             String resultado = "";
             int idex = 0;
             if (this.jRadioButtonDesencriptar.isSelected()) {
-                System.out.println("Desencriptar. Codificador "+this.jRadioButtonBase64NO.isSelected());
+                System.out.println("Desencriptar. Codificador " + this.jRadioButtonBase64NO.isSelected());
                 for (String v : valores) {
                     idex++;
                     if (this.jRadioButtonBase64NO.isSelected()) {
@@ -276,7 +272,7 @@ public class FrmSecret extends javax.swing.JFrame {
                 this.jTextAreaResultado.setText(resultado);
                 JOptionPane.showMessageDialog(null, "Desencriptado con éxito", "Éxito", 1);
             } else if (this.jRadioButtonEncriptar.isSelected()) {
-                System.out.println("Encriptar. Codificador "+this.jRadioButtonBase64NO.isSelected());
+                System.out.println("Encriptar. Codificador " + this.jRadioButtonBase64NO.isSelected());
 
                 for (String v : valores) {
                     idex++;
@@ -293,7 +289,7 @@ public class FrmSecret extends javax.swing.JFrame {
 
                 JOptionPane.showMessageDialog(null, "Encriptado con éxito", "Éxito", 1);
             } else {
-                 this.jTextAreaResultado.setText("");
+                this.jTextAreaResultado.setText("");
                 System.out.println("Tipo de encriptacion seleccionado");
                 JOptionPane.showMessageDialog(null, "Tipo de encriptacion seleccionado.", "Parametro Invalido", 2);
             }
@@ -301,7 +297,7 @@ public class FrmSecret extends javax.swing.JFrame {
             this.jTextAreaResultado.setText("");
             ex.printStackTrace();
             System.out.println("Error al encriptar o desencriptar valor " + ex);
-            JOptionPane.showMessageDialog(null, "Error al generar el resultado: " + ex.getMessage(), "Resultado", 0);
+            JOptionPane.showMessageDialog(null, "Error al generar el resultado: " + ex.getMessage(), " Resultado", 0);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -322,20 +318,20 @@ public class FrmSecret extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmSecret.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmSecret.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmSecret.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmSecret.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmAes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmSecret().setVisible(true);
+                new FrmAes().setVisible(true);
             }
         });
     }
@@ -359,6 +355,7 @@ public class FrmSecret extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonDesencriptar;
     private javax.swing.JRadioButton jRadioButtonEncriptar;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextArea jTextAreaResultado;
     private javax.swing.JTextField jTextFieldSemilla;
     private javax.swing.JTextField jTextFieldValor;
